@@ -3,6 +3,18 @@ export interface MyComponentProps {
 }
 
 export interface AuthContextValue {
-  currentUser: undefined | null;
+  currentUser: TUser | undefined;
   signup: (email: string, password: string) => void;
+  login: (email: string, password: string) => void;
+  logout: () => void;
+  resetPassword: (email: string) => void;
+  updateUserEmail: (email: string) => void;
+  updateUserPassword: (password: string) => void;
 }
+
+export type TUser = {
+  email: string;
+  password: string;
+};
+
+export type TRef = React.RefObject<HTMLInputElement>;

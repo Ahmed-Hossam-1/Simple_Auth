@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
+import AuthProvider from "../context/AuthContext";
 
 const Layout = () => {
   return (
@@ -9,7 +10,9 @@ const Layout = () => {
         style={{ minHeight: "100vh" }}
       >
         <main className="w-100" style={{ maxWidth: "400px" }}>
-          <Outlet />
+          <AuthProvider>
+            <Outlet />
+          </AuthProvider>
         </main>
       </Container>
     </>

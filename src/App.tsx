@@ -10,16 +10,24 @@ import Signin from "./auth/Signin";
 import ForgotPassword from "./components/ForgotPassword";
 import Dashboard from "./components/Dashboard";
 import UpdateProfile from "./components/UpdateProfile";
+import RequireAuth from "./context/RequireAuth";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route
+          index
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/forgot-password" element={<UpdateProfile />} />
+        <Route path="/update-profile" element={<UpdateProfile />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Route>
     )
